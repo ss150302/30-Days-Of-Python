@@ -1,9 +1,12 @@
+from fastapi import FastAPI
+from flask.globals import app_ctx
 
-from mymodule import generate_full_name as fullname, sum_two_nums as total, person as p, gravity as g
-print(fullname('Asabneh','Yetayeh'))
-print(total(1, 9))
-mass = 100;
-weight = mass * g
-print(weight)
-print(p)
-print(p['firstname'])
+app1 = FastAPI()
+@app1.get('/')
+def read_root():
+    return {"Hello": "World"}
+if __name__ == '__main__':
+    import uvicorn
+    uvicorn.run(app1, host='localhost', port=8000)
+    # Compare this snippet from D_12_main.py:
+    #     print(sqrt(2))             # 1.4142135623730951, square root
